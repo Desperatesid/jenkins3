@@ -32,8 +32,7 @@ pipeline {
         }
 	stage('Deployment') {
 	   steps {
-		sh 'sshpass -p staragile scp target/gamutkart.war staragile@172.31.44.167:/home/staragile/apache-tomcat-9.0.85/webapps/'
-	}
+		deploy adapters: [tomcat9(credentialsId: '1cbc0a58-9677-402b-b9d9-836242251b7a', path: '', url: 'http://18.119.136.174:8081')], contextPath: 'gamutkart', war: '**/*.war'}
     }
 }
 }
